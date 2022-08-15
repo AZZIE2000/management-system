@@ -1,16 +1,14 @@
 body {
   position: relative;
-  height: 100%;
-}
-main img {
   height: 100vh;
-
-  width: 100%;
 }
 main {
+  height: 100vh;
+  background-image: url(./media/bc.webp);
+  width: 100%;
   overflow: hidden;
-  height: 100%;
 }
+
 footer {
   position: absolute;
   bottom: 0px;
@@ -26,7 +24,20 @@ footer img {
   margin-bottom: 20px;
   height: 50px;
   width: 50px;
-  /* margin: 30px; */
 }
-footer p {
+#container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+td,
+th {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+table {
+  background-color: white;
+  border: 1px solid black;
 }

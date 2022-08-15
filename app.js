@@ -86,6 +86,7 @@ function render(...employeeCode) {
     );
   return;
 }
+
 render(
   employee01,
   employee02,
@@ -95,3 +96,70 @@ render(
   employee06,
   employee07
 );
+
+let container = document.getElementById("container");
+let table = document.createElement("table");
+let tr = document.createElement("tr");
+// Create the header of the table
+// Array of the Object keys(table header data)
+let tHeader = [
+  "Employee Id",
+  "Full Name",
+  "Department",
+  "Level",
+  "Image",
+  "Salary",
+];
+function firstTableRow() {
+  // this for-loop: to create td "t-data" for each Object keys(table header data) item in the array.
+  for (s = 0; s < tHeader.length; s++) {
+    if (s == 4) {
+      continue;
+    }
+    // assign the <th>
+    let th = document.createElement("th");
+    // assign the data inside the <th>
+    let tdText = document.createTextNode(tHeader[s]);
+    // make the text appear in the <th>
+    th.appendChild(tdText);
+    // make the <th> appear in the <tr>
+    tr.appendChild(th);
+  }
+  table.appendChild(tr);
+  // assign this <tr> to the <table>
+}
+function tableBody() {
+  // assigned the variables of the (object constructor"EmployeeCard") to Array
+  let emplist = [
+    employee01,
+    employee02,
+    employee03,
+    employee04,
+    employee05,
+    employee06,
+    employee07,
+  ];
+  // this for-loop to make it run as the array length
+  for (i = 0; i < emplist.length; i++) {
+    // assigned the <tr> inside the for-loop to create it as many times as the loop ran.
+    let tr = document.createElement("tr");
+    // this for-loop extract and assign each (value) of the (keys) to a <td>, as much keys there are
+    for (x = 0; x < Object.values(employee01).length; x++) {
+      // if to skip the link
+      if (x == 4) {
+        continue;
+      }
+      // you get it ryt?
+      let td = document.createElement("td");
+      let tdText = document.createTextNode(Object.values(emplist[i])[x]);
+      td.appendChild(tdText);
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  container.appendChild(table);
+}
+
+firstTableRow();
+tableBody();
+// console.log(Object.keys(employee01));
