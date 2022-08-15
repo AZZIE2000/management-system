@@ -13,3 +13,9 @@ log:
 1. Constructors added.
 2. basic HTML page.
 3. finished the tasks.
+
+15/8 :
+
+1. worked on the DOM .
+2. Added the table.
+3. styling.
