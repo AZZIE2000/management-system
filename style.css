@@ -51,14 +51,18 @@ table {
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 20px;
+  font-weight: bold;
+}
+#cardPlace h5 {
+  margin-bottom: 20px;
 }
 
 #divCard {
   padding: 10px;
   width: 300px;
-  background-color: rgb(218, 246, 255);
+  background-color: rgb(255, 255, 255);
   margin: 0 auto;
-  border-radius: 10%;
+  /* border-radius: 10%; */
   border: 2px solid black;
 }
 form {
@@ -85,4 +89,9 @@ span {
 #idInput::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+#thePics {
+  width: 90%;
+  margin-bottom: 20px;
+  border-radius: 100%;
 }

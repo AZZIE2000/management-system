@@ -229,7 +229,7 @@ function createCard(array) {
 
   let cardTemplate =
     " <div id='divCard'>   <div> " +
-    "    <img src=" +
+    "    <img id='thePics' src=" +
     image +
     ">" +
     "    </div>" +
@@ -238,6 +238,7 @@ function createCard(array) {
     "Employee ID: " +
     id +
     "</h5>" +
+    "<hr/>" +
     "      <p> Name: " +
     fullName +
     "</p> <p> Department: " +
