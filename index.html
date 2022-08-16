@@ -43,6 +43,38 @@
       </nav>
     </header>
     <main>
+      <form id="form" action="">
+        <label>ID <span>*</span></label>
+        <input
+          id="idInput"
+          placeholder="1000"
+          type="text"
+          pattern="\d*"
+          maxlength="4"
+          required
+        />
+        <label>Full Name <span>*</span></label>
+        <input required id="nameInput" placeholder="John Doe" type="text" />
+        <label for="">Department <span>*</span></label>
+        <select required id="idDepartment">
+          <option disabled selected value="">Choose Department</option>
+          <option>Administration</option>
+          <option>Marketing</option>
+          <option>Development</option>
+          <option>Finance</option>
+        </select>
+        <label for="">Level <span>*</span></label>
+        <select required id="idLevel">
+          <option disabled selected value="">Choose Level</option>
+          <option value="Junior">Junior</option>
+          <option value="Mid-Senior">Mid-Senior</option>
+          <option value="Senior">Senior</option>
+        </select>
+        <label for="">Image <span>*</span> </label>
+        <input id="idImage" placeholder="http:...png/.jpg/.jpeg" type="url" />
+        <button id="idSubmit" type="submit">Submit</button>
+      </form>
+      <div id="cardPlace"></div>
       <div id="container"></div>
     </main>
     <footer>

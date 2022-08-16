@@ -128,9 +128,31 @@ function firstTableRow() {
   table.appendChild(tr);
   // assign this <tr> to the <table>
 }
+// 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+function addNewToTable(array) {
+  for (i = 0; i < array.length; i++) {
+    // assigned the <tr> inside the for-loop to create it as many times as the loop ran.
+    let tr = document.createElement("tr");
+    // this for-loop extract and assign each (value) of the (keys) to a <td>, as much keys there are
+    for (x = 0; x < Object.values(employee01).length; x++) {
+      // if to skip the link
+      if (x == 4) {
+        continue;
+      }
+      // you get it ryt?
+      let td = document.createElement("td");
+      let tdText = document.createTextNode(Object.values(array[i])[x]);
+      td.appendChild(tdText);
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  container.appendChild(table);
+}
+let emplist;
 function tableBody() {
-  // assigned the variables of the (object constructor"EmployeeCard") to Array
-  let emplist = [
+  // assigned the letiables of the (object constructor"EmployeeCard") to Array
+  emplist = [
     employee01,
     employee02,
     employee03,
@@ -163,3 +185,74 @@ function tableBody() {
 firstTableRow();
 tableBody();
 // console.log(Object.keys(employee01));
+
+let cardArr = [];
+const addCard = (ev) => {
+  ev.preventDefault();
+  // to get info from (form)
+  let cardInfo;
+
+  function getInfo() {
+    cardInfo = {
+      employeeId: document.getElementById("idInput").value,
+      fullName: document.getElementById("nameInput").value,
+      department: document.getElementById("idDepartment").value,
+      level: document.getElementById("idLevel").value,
+      imageURL: document.getElementById("idImage").value,
+      salary: median(document.getElementById("idLevel").value),
+    };
+    if (cardInfo.imageURL == "") {
+      cardInfo.imageURL = "https://randomuser.me/api/portraits/women/3.jpg";
+    }
+  }
+
+  getInfo();
+  cardArr.push(cardInfo);
+
+  document.forms[0].reset();
+  createCard(cardInfo);
+  addNewToTable(cardArr);
+  console.warn("added", cardArr);
+};
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("form").addEventListener("submit", addCard);
+});
+
+// to create cards
+function createCard(array) {
+  let image = array.imageURL;
+  let id = array.employeeId;
+  let fullName = array.fullName;
+  let department = array.department;
+  let level = array.level;
+  let salary = array.salary;
+
+  let cardTemplate =
+    " <div id='divCard'>   <div> " +
+    "    <img src=" +
+    image +
+    ">" +
+    "    </div>" +
+    "    <div>" +
+    "      <h5>" +
+    "Employee ID: " +
+    id +
+    "</h5>" +
+    "      <p> Name: " +
+    fullName +
+    "</p> <p> Department: " +
+    department +
+    "</p>  <p>level:  " +
+    level +
+    "</p> <p> The Salary: " +
+    salary +
+    "$</p>";
+  (" </div> </div>");
+
+  document
+    .getElementById("cardPlace")
+    .insertAdjacentHTML("beforeend", cardTemplate);
+}
+for (i = 0; i < emplist.length; i++) {
+  createCard(emplist[i]);
+}
