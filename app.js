@@ -202,7 +202,10 @@ const addCard = (ev) => {
       salary: median(document.getElementById("idLevel").value),
     };
     if (cardInfo.imageURL == "") {
-      cardInfo.imageURL = "https://randomuser.me/api/portraits/women/3.jpg";
+      cardInfo.imageURL =
+        "https://randomuser.me/api/portraits/women/" +
+        Math.floor(Math.random() * (99 - 1) + 1) +
+        ".jpg";
     }
   }
 
