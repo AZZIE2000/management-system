@@ -216,6 +216,7 @@ const addCard = (ev) => {
   createCard(cardInfo);
   addNewToTable(cardArr);
   console.warn("added", cardArr);
+  saveToLocal();
 };
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("form").addEventListener("submit", addCard);
@@ -260,3 +261,19 @@ function createCard(array) {
 for (i = 0; i < emplist.length; i++) {
   createCard(emplist[i]);
 }
+
+function saveToLocal() {
+  let strArr = JSON.stringify(cardArr);
+  localStorage.setItem("employees", strArr);
+}
+
+function getFromLocal() {
+  let jsonArr = localStorage.getItem("employees");
+  let arr = JSON.parse(jsonArr);
+  cardArr = arr;
+  arr.forEach((Array) => {
+    createCard(Array);
+  });
+  console.log(arr);
+}
+getFromLocal();
