@@ -211,12 +211,12 @@ const addCard = (ev) => {
 
   getInfo();
   cardArr.push(cardInfo);
-
+  tableArr.push(cardInfo);
   document.forms[0].reset();
+  saveToLocal();
   createCard(cardInfo);
   addNewToTable(cardArr);
   console.warn("added", cardArr);
-  saveToLocal();
 };
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("form").addEventListener("submit", addCard);
@@ -261,19 +261,39 @@ function createCard(array) {
 for (i = 0; i < emplist.length; i++) {
   createCard(emplist[i]);
 }
-
+// 0000000000000000000000000000000000
 function saveToLocal() {
   let strArr = JSON.stringify(cardArr);
   localStorage.setItem("employees", strArr);
+  let strArr1 = JSON.stringify(emplist);
+  localStorage.setItem("employees1", strArr1);
 }
 
 function getFromLocal() {
   let jsonArr = localStorage.getItem("employees");
   let arr = JSON.parse(jsonArr);
+
   cardArr = arr;
-  arr.forEach((Array) => {
-    createCard(Array);
+  arr.forEach((arr) => {
+    createCard(arr);
   });
-  console.log(arr);
 }
-getFromLocal();
+let tableArr = [];
+function getFromLocal1() {
+  let jsonArr1 = localStorage.getItem("employees1");
+  let arr1 = JSON.parse(jsonArr1);
+
+  tableArr = arr1;
+  tableArr.forEach((x) => {
+    addNewToTable(x);
+  });
+}
+
+// on refresh the table added data
+// localStorage.removeItem("employees1");
+if (localStorage.getItem("employees") != null) {
+  getFromLocal();
+}
+if (localStorage.getItem("employees1") != null) {
+  getFromLocal1();
+}
